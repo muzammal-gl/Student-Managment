@@ -11,9 +11,6 @@
 <body>
         @include('layouts.components.header')
     <div class="">
-        <div class="text-end" style="position: relative;right: 40;top: 20;">
-            <a href="{{route('logout')}}" class="btn btn-danger">Logout</a>
-        </div>
         <div class="row">
             <div class="col-3 col-md-3 ">
             @include('layouts.components.sidebar')

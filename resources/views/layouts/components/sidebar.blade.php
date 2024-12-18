@@ -1,4 +1,4 @@
-<div class="w-full" style="width: 278px; height: 785;position: relative;top: -38px;"> 
+<div class="w-full" style="width: 278px; height: 785;position: relative;top: 0px;"> 
     <div class="bg-gray-800 text-white h-full rounded-lg rounded-tl-none rounded-tr-none shadow-lg">
         <ul class="space-y-2 p-4">
             <li>

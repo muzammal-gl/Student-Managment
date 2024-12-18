@@ -38,6 +38,15 @@
             @enderror
         </div>
 
+        <div>
+            <label for="password" class="block text-sm font-medium text-gray-600">Password</label>
+            <input type="password" name="password" id="password" value="{{ old('password') }}"
+             class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 @error('password') border-red-500 @enderror">
+             @error('password') 
+              <span class="text-red-500 text-sm">{{ $message }}</span>
+             @enderror
+      </div>
+
         <!-- Status Field -->
         <div>
             <label for="status" class="block text-sm font-medium text-gray-600">Status</label>

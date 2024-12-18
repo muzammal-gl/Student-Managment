@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -24,6 +25,11 @@ class StudentController extends Controller
         return view('students.index', compact('students'));
     }
 
+    public function studentDashboard()
+    {
+        return view('students.dashboard');
+    }
+
     public function create()
     {
         return view('students.create');
@@ -32,10 +38,12 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $teacherId = auth()->id();
+
         Student::create($request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:students,email',
             'phone_number' => 'required|numeric',
+            'password'=> 'required|min:8',
             'status' => 'required|in:active,inactive',
         ]) + ['teacher_id' => $teacherId]);
 
@@ -56,8 +64,15 @@ class StudentController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|unique:students,email,' . $student->id,
             'phone_number' => 'nullable|string|max:20',
+            'password' => 'nullable|min:8',
             'status' => 'required|in:active,inactive',
         ]);
+
+        if ($request->has('password') && $request->password) {
+            $validated['password'] = bcrypt($request->password);
+        } else {
+            unset($validated['password']);
+        }
 
         $student->update($validated);
 
@@ -77,5 +92,10 @@ class StudentController extends Controller
         if ($student->teacher_id !== auth()->id()) {
             abort(403, 'Unauthorized action.');
         }
+    }
+
+    public function logout()
+    {    Auth::guard('students')->logout();
+        return redirect()->route('login')->with('success', 'You have been logged out.');
     }
 }

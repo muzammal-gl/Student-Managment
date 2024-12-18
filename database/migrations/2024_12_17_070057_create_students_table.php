@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
+            $table->string('password');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->foreignId('teacher_id')->constrained('users')->onDelete('set null');
             $table->timestamps();

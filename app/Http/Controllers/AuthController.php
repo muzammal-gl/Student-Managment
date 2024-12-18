@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -23,6 +25,12 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->route('dashboard')->with('success', 'Login successful!');
         }
+
+        if (Auth::guard('students')->attempt($credentials)) {
+            session(['student_id' => Auth::guard('students')->id()]);
+            return redirect()->route('student.dashboard')->with('success', 'Login successful!');
+        }
+
         return back()->withErrors(['email' => 'Invalid credentials.'])->onlyInput('email');
     }
 
