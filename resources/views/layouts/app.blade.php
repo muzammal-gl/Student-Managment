@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    <div>
+    <div class="row">
         @include('layouts.components.footer')
     </div>
     <script src="https://cdn.tailwindcss.com"></script>

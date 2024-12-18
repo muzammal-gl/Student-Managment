@@ -6,15 +6,17 @@
                 <span>{{ auth()->user()->name }}</span>
             </div>
         </div>
+
+        {{-- <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://www.example.com/your-image.jpg" alt="Profile" class="rounded-circle" width="30" height="30">
+                Username
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+        </div> --}}
     </nav>
-    <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 hidden group-hover:block">
-        <div class="py-2">
-            <a href="" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Edit Profile</a>
-            <form action="{{ route('logout') }}" method="POST" class="px-4 py-2 text-gray-700 hover:bg-gray-200">
-                @csrf
-                <button type="submit" class="w-full text-left">Logout</button>
-            </form>
-        </div>
-    </div>
 </header>
 

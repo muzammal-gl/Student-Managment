@@ -5,7 +5,7 @@
     {{-- <a data-bs-toggle="modal" data-bs-target="#studentModal" class="bg-blue-500 hover:bg-blue-600 text-white cursor-pointer font-semibold py-2 px-4 rounded mb-4 inline-block text-end no-underline">
         Add New Student
     </a> --}}
-    <a href="{{ route('students.create') }}" data-bs-toggle="modal" data-bs-target="#studentModal" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mb-4 inline-block text-end no-underline">
+    <a href="{{ route('students.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mb-4 inline-block text-end no-underline">
         Add New Student
     </a>
     <!-- Student Table -->
